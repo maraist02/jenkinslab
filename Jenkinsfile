@@ -1,22 +1,19 @@
 pipeline {
     agent any
-    
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/maraist02/jenkinslab'
+                git branch: 'main', credentialsId: 'git-creds-id', url: 'git@github.com:org/repo.git'
             }
         }
-
         stage('Terraform Init') {
             steps {
                 sh 'terraform init'
             }
         }
-
-        stage('Terraform Apply') {
+        stage('Terraform Plan') {
             steps {
-                sh 'terraform apply -auto-approve'
+                sh 'terraform plan'
             }
         }
     }
