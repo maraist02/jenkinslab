@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'git-creds-id', url: 'git@github.com:org/repo.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/maraist02/jenkinslab'
             }
         }
         stage('Terraform Init') {
